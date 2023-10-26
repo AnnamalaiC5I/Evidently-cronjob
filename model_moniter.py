@@ -23,8 +23,8 @@ import numpy as np
 import psycopg2
 
 
-conn = psycopg2.connect(host='mydb.czj96lm1eush.us-west-2.rds.amazonaws.com', dbname='postgres',
-                        user='postgres', password='Admin123*')
+conn = psycopg2.connect(host=os.environ.get('DB_URL'), dbname='postgres',
+                        user='postgres', password=os.environ.get('DB_PASSWORD'))
 cursor = conn.cursor()
 
 
@@ -158,6 +158,6 @@ WORKSPACE = "workspace"
 YOUR_PROJECT_NAME = "pharma-realtime"
 YOUR_PROJECT_DESCRIPTION = "Test project using Adult dataset."    
 
-ws = RemoteWorkspace("http://35.88.54.181:5000/")
+ws = RemoteWorkspace(os.environ.get('EVIDENTLY_SERVER'))
 exist = ws.search_project(YOUR_PROJECT_NAME)
 create_demo_project(ws,WORKSPACE,exist)
