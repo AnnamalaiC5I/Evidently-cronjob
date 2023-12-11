@@ -31,13 +31,10 @@ cursor = conn.cursor()
 postgres_insert_query = """ INSERT INTO usecase1 (label,General_Health,Checkup,Age_Category,Height,Weight,BMI,Alcohol_Consumption,Fruit_Consumption,Green_Vegetables_Consumption,FriedPotato_Consumption,Exercise_Yes,Skin_Cancer_Yes,Other_Cancer_Yes,Depression_Yes,Diabetes_No_pre_diabetes_or_borderline_diabetes,Diabetes_Yes,Diabetes_Yes_but_female_told_only_during_pregnancy,Arthritis_Yes,Sex_Male,Smoking_History_Yes,PATIENT_ID,predictions) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
  
 
-column_names = ['label','General_Health', 'Checkup', 'Age_Category', 'Height', 'Weight', 'BMI',
-       'Alcohol_Consumption', 'Fruit_Consumption',
-       'Green_Vegetables_Consumption', 'FriedPotato_Consumption',
-       'Exercise_Yes', 'Skin_Cancer_Yes', 'Other_Cancer_Yes', 'Depression_Yes',
-       'Diabetes_No_pre-diabetes_or_borderline_diabetes', 'Diabetes_Yes',
-       'Diabetes_Yes_but_female_told_only_during_pregnancy', 'Arthritis_Yes',
-       'Sex_Male', 'Smoking_History_Yes', 'PATIENT_ID','predictions']
+column_names = ['CustomerID', 'Intel_Plan', 'Vmail_Plan', 'Vmail_Message', 'Day_Mins',
+       'Day_Calls', 'Day_Charge', 'Eve_Mins', 'Eve_Calls', 'Eve_Charge',
+       'Night_Mins', 'Night_Calls', 'Night_Charge', 'Intl_Mins', 'Intl_Calls',
+       'Intl_Charge', 'CustServ_Calls', 'target', 'predictions', 'label']
 
 command1 =   """ SELECT * FROM cpgretail; """
 cursor.execute(command1)
