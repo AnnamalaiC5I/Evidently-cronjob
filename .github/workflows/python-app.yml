@@ -34,4 +34,4 @@ jobs:
     
     - name: Model Monitoring script
       run: |
-        python cpg_moniter.py
+        python cpg_monitor.py
