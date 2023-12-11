@@ -23,8 +23,8 @@ import numpy as np
 import psycopg2
 
 
-conn = psycopg2.connect(host=os.environ.get('DB_URL'), dbname='postgres',
-                        user='postgres', password=os.environ.get('DB_PASSWORD'))
+conn = psycopg2.connect(host='mydb.czj96lm1eush.us-west-2.rds.amazonaws.com', dbname='postgres',
+                        user='postgres', password='Admin123*')
 cursor = conn.cursor()
 
 column_names = ['CustomerID', 'Intel_Plan', 'Vmail_Plan', 'Vmail_Message', 'Day_Mins',
