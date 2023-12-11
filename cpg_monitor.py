@@ -27,23 +27,19 @@ conn = psycopg2.connect(host=os.environ.get('DB_URL'), dbname='postgres',
                         user='postgres', password=os.environ.get('DB_PASSWORD'))
 cursor = conn.cursor()
 
-
-postgres_insert_query = """ INSERT INTO usecase1 (label,General_Health,Checkup,Age_Category,Height,Weight,BMI,Alcohol_Consumption,Fruit_Consumption,Green_Vegetables_Consumption,FriedPotato_Consumption,Exercise_Yes,Skin_Cancer_Yes,Other_Cancer_Yes,Depression_Yes,Diabetes_No_pre_diabetes_or_borderline_diabetes,Diabetes_Yes,Diabetes_Yes_but_female_told_only_during_pregnancy,Arthritis_Yes,Sex_Male,Smoking_History_Yes,PATIENT_ID,predictions) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
- 
-
 column_names = ['CustomerID', 'Intel_Plan', 'Vmail_Plan', 'Vmail_Message', 'Day_Mins',
        'Day_Calls', 'Day_Charge', 'Eve_Mins', 'Eve_Calls', 'Eve_Charge',
        'Night_Mins', 'Night_Calls', 'Night_Charge', 'Intl_Mins', 'Intl_Calls',
        'Intl_Charge', 'CustServ_Calls', 'target', 'predictions', 'label']
 
-command1 =   """ SELECT * FROM cpgretail; """
+command1 =   """ SELECT * FROM churncpg; """
 cursor.execute(command1)
 rows = cursor.fetchall()
 dfs= rows.copy()
 curr_data = pd.DataFrame(dfs, columns=column_names)
 
 
-command2 =   """SELECT * FROM cpgretail WHERE label = 'train'; """
+command2 =   """SELECT * FROM churncpg WHERE label = 'train'; """
 cursor.execute(command2)
 rows = cursor.fetchall()
 ref_data = rows.copy()
@@ -153,7 +149,7 @@ def create_demo_project(ws, workspace, exist):
 
 WORKSPACE = "workspace"
 YOUR_PROJECT_NAME = "cpgrealtime-realtime"
-YOUR_PROJECT_DESCRIPTION = "Test project using Adult dataset."    
+YOUR_PROJECT_DESCRIPTION = "project using Churn dataset."    
 
 ws = RemoteWorkspace(os.environ.get('EVIDENTLY_SERVER'))
 exist = ws.search_project(YOUR_PROJECT_NAME)
